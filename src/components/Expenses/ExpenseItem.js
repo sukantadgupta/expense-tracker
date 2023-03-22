@@ -5,6 +5,11 @@ import ExpenseDetails from './ExpenseDetails';
 
 
 const ExpenseItem = (props) => {
+
+  const handleDelete = () => {
+    const expenseItem = document.querySelector('.expense-item');
+    expenseItem.parentNode.removeChild(expenseItem);
+  };
  
   return (
    
@@ -14,6 +19,7 @@ const ExpenseItem = (props) => {
 <ExpenseDate date ={props.date} />
 
 <ExpenseDetails amount={props.amount}  place={props.place}   title={props.title} />
+<button onClick={handleDelete}>Delete Expense</button>
 
 
 
