@@ -1,32 +1,38 @@
-import React from 'react'
-import './ExpenseItem.css'
-import ExpenseDate from './ExpenseDate';
-import ExpenseDetails from './ExpenseDetails';
 
+import React, { useState } from 'react';
+
+import ExpenseDate from './ExpenseDate';
+import Card from '../UI/Card';
+import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
-
-  const handleDelete = () => {
-    const expenseItem = document.querySelector('.expense-item');
-    expenseItem.parentNode.removeChild(expenseItem);
+  // function clickHandler() {}
+  const [title, setTitle] = useState(props.title);
+  const [amount,setAmount] = useState(props.amount);
+  console.log('ExpenseItem evaluated by React');
+  
+  const clickHandler = () => {
+    setTitle('Updated!');
+    console.log(title);
   };
- 
+
+  const ChangeAmount = () => {
+    setAmount('100');
+    console.log(amount);
+  }
+
   return (
-   
-
-      <div className='expense-item'>
-
-<ExpenseDate date ={props.date} />
-
-<ExpenseDetails amount={props.amount}  place={props.place}   title={props.title} />
-<button onClick={handleDelete}>Delete Expense</button>
-
-
-
-
-
-        </div>
-  )
+    <Card className='expense-item'>
+      <ExpenseDate date={props.date} />
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__place'>{props.place}</div>
+        <div className='expense-item__price'>${amount}</div>
+        <button onClick={ChangeAmount}>Change Amount</button>
+      </div>
+      <button onClick={clickHandler}>Change Title</button>
+    </Card>
+  );
 }
 
-export default ExpenseItem
+export default ExpenseItem;
