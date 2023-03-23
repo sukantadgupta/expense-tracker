@@ -1,10 +1,11 @@
-
+import React,{useState} from 'react';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import Card from './components//UI/Card';
 import './components/Expenses/ExpenseItem.css';
 import NewExpense from './components/NewExpense/NewExpense';
 
 const App=()=> {
+ 
 
   const expenses = [
     {
@@ -35,11 +36,23 @@ const App=()=> {
 
     },
   ];
+
+  const [expense ,SetExpense] = useState(expenses);
+
+  const addExpenseHandler = (expense)=> {
+    console.log('In App.js');
+        SetExpense((prevExpenses) => {
+          return [expense, ...prevExpenses];
+        })
+    console.log(expense);
+    console.log(expenses);
+
+  };
   return (
     <div className="App">
-       <NewExpense />
+       <NewExpense onAddExpense={addExpenseHandler}/>
           <Card className="expenses">
-      {expenses.map((ele,index)=>
+      {expense?.map((ele,index)=>
    
       <ExpenseItem
       title = {ele.title}
