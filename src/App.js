@@ -61,10 +61,11 @@ const App=()=> {
           <Card className="expenses">
           <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
       {expense?.map((ele,index)=>
-      <>
+  
            
    
       <ExpenseItem
+      key = {ele.id}
       title = {ele.title}
       amount = {ele.amount}
       date = {ele.date}
@@ -72,7 +73,7 @@ const App=()=> {
 
       
       />
-      </>
+  
    
       )
     }
