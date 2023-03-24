@@ -3,6 +3,7 @@ import ExpenseItem from './components/Expenses/ExpenseItem';
 import Card from './components//UI/Card';
 import './components/Expenses/ExpenseItem.css';
 import NewExpense from './components/NewExpense/NewExpense';
+import ExpensesFilter from './components/Expenses/ExpensesFilter';
 
 const App=()=> {
  
@@ -48,11 +49,20 @@ const App=()=> {
     console.log(expenses);
 
   };
+
+  const [filteredYear, setFilteredYear] = useState('2020');
+
+  const filterChangeHandler = selectedYear => {
+    setFilteredYear(selectedYear);
+  };
   return (
     <div className="App">
        <NewExpense onAddExpense={addExpenseHandler}/>
           <Card className="expenses">
+          <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
       {expense?.map((ele,index)=>
+      <>
+           
    
       <ExpenseItem
       title = {ele.title}
@@ -62,6 +72,7 @@ const App=()=> {
 
       
       />
+      </>
    
       )
     }
