@@ -5,6 +5,7 @@ import './components/Expenses/ExpenseItem.css';
 import NewExpense from './components/NewExpense/NewExpense';
 import ExpensesFilter from './components/Expenses/ExpensesFilter';
 import ExpensesList from './components/Expenses/ExpensesList';
+import ExpenseChart from './components/Expenses/ExpenseChart';
 
 
 const App=()=> {
@@ -68,6 +69,7 @@ const App=()=> {
        <NewExpense onAddExpense={addExpenseHandler}/>
           <Card className="expenses">
           <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
+          <ExpenseChart expenses={filteredExpenses} />
           <ExpensesList items={filteredExpenses} />
        </Card>
       
